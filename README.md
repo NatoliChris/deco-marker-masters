@@ -1,4 +1,4 @@
-# DECO1012 Marking Helper
+# IDEA9103 Marking Helper
 
 ## Dependencies
 
@@ -13,7 +13,7 @@
 - Wow, I thought there were more than that
 
 ```bash
-$ pip install --user flask requests
+$ pip3 install --user flask requests
 ```
 
 ## Setup
@@ -36,7 +36,7 @@ $ ./extract.sh
  
 This script requires that you have the submissions downloaded as a zipfile from
 Canvas, and saved as `submissions.zip`. You can find them
-[here](https://canvas.sydney.edu.au/courses/13984/assignments/130963), under **Download Submissions**.
+[here](https://canvas.sydney.edu.au/courses/13984/assignments/14318), under **Download Submissions**.
 
 It also requires the following files:
 
