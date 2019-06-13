@@ -57,13 +57,13 @@ def view(sid):
 def get_sketch():
     if current_user['latest_submission'] is None:
         return ""
-    if os.path.exists(f"extracted/{current_user['latest_submission']}/mySketch.js"):
-        return nocache(send_file(f"extracted/{current_user['latest_submission']}/mySketch.js"))
+    if os.path.exists(f"extracted_idea/{current_user['latest_submission']}/mySketch.js"):
+        return nocache(send_file(f"extracted_idea/{current_user['latest_submission']}/mySketch.js"))
     else:
-        return nocache(send_file(f"extracted/{current_user['latest_submission']}/sketch.js"))
+        return nocache(send_file(f"extracted_idea/{current_user['latest_submission']}/sketch.js"))
 
 @app.route('/index.html')
-def extracted_index():
+def extracted_idea_index():
     print("boop");
     return nocache(send_file(f"fixed_index.html"))
 
@@ -72,7 +72,7 @@ def static_proxy(path):
     if path != 'favicon.ico':
         if current_user['latest_submission'] is None:
             return ""
-        return nocache(send_file(f"extracted/{current_user['latest_submission']}/{path}"))
+        return nocache(send_file(f"extracted_idea/{current_user['latest_submission']}/{path}"))
     abort(404);
 
 @app.route('/')
@@ -118,19 +118,19 @@ def get_submission_id(filename):
     return 0
 
 def get_sketch_path(filename):
-    if not os.path.isdir(f'extracted/{filename}'):
+    if not os.path.isdir(f'extracted_idea/{filename}'):
         return ''
-    if 'index.html' in os.listdir(f'extracted/{filename}'):
+    if 'index.html' in os.listdir(f'extracted_idea/{filename}'):
         return filename
-    for f in os.listdir(f'extracted/{filename}'):
-        if not os.path.isdir(f'extracted/{filename}/{f}'):
+    for f in os.listdir(f'extracted_idea/{filename}'):
+        if not os.path.isdir(f'extracted_idea/{filename}/{f}'):
             continue;
-        if 'index.html' in os.listdir(f'extracted/{filename}/{f}'):
+        if 'index.html' in os.listdir(f'extracted_idea/{filename}/{f}'):
             return f'{filename}/{f}'
-        for s in os.listdir(f'extracted/{filename}/{f}'):
-            if not os.path.isdir(f'extracted/{filename}/{f}/{s}'):
+        for s in os.listdir(f'extracted_idea/{filename}/{f}'):
+            if not os.path.isdir(f'extracted_idea/{filename}/{f}/{s}'):
                 continue;
-            if 'index.html' in os.listdir(f'extracted/{filename}/{f}/{s}'):
+            if 'index.html' in os.listdir(f'extracted_idea/{filename}/{f}/{s}'):
                 return f'{filename}/{f}/{s}'
     return ''
 
@@ -141,7 +141,7 @@ def get_users():
         return users
 
 if __name__ == '__main__':
-    files = os.listdir('extracted/')
+    files = os.listdir('extracted_idea/')
     ids = {get_user_id(f): {} for f in files}
     if os.path.exists('sids_idea.txt'):
         with open('sids_idea.txt') as f:

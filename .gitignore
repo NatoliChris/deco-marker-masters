@@ -1,13 +1,13 @@
-extracted/
-pdfs/
-zips/
+extracted_idea/
+pdfs_idea/
+zips_idea/
 extracted/
 zipfiles
 token
 users
 test.json
 test.py
-student_submissions.zip
+submissions_idea.zip
 submissions.zip
 marking_site.zip
 sids
