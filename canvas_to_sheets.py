@@ -3,13 +3,13 @@ from tqdm import tqdm
 from pprint import pprint
 import multiprocessing as mp
 
-URL = "https://script.google.com/macros/s/AKfycbxYB3-IF-UW1xeYpMqD5F5l4hyHBNk8UDq8LB-XCgmBaiOLIR4G/exec"
+URL = "https://script.google.com/macros/s/AKfycbwdyHao-vp_Tg5zU3WXuAvb9X9qWHaiPIhbH36Khw/exec"
 
 BASE_URL = 'https://canvas.sydney.edu.au/api/v1'
 SPREADSHEET_ID = "15_S3NnkU6Z7lEXlEEpWCsYy0tDbs_46tkt5khuCkcOI"
 
-COURSE = 13984
-ASSIGNMENT = 130963
+COURSE = 14318
+ASSIGNMENT = 132223
 
 CRITERIA = [ '_5362', '_6391', '_2163' ]
 
@@ -23,13 +23,9 @@ HEADERS = {
 
 markers = {
     2652: "Liam",
-    33665: "Michael",
     127108: "Kartik",
     27704: "Harrison",
-    40726: "Callum",
-    114342: "Crystal",
-    45172: "Alex",
-    87131: "Luke"
+    45172: "Alex"
 }
 
 users = {}
@@ -50,6 +46,7 @@ def append_row(student):
     user = users[sid]
     comments = student["submission_comments"]
     if user[0] not in allocations:
+        print(user[0])
         return
     crit_a = ""
     crit_b = ""
@@ -79,7 +76,7 @@ def append_row(student):
     return r
 
 def get_users():
-    with open('users') as f:
+    with open('users_idea') as f:
         users = [x.strip().split('|') for x in f.read().strip().split('\n')]
         users = {int(u[0]): (int(u[1]), u[2], u[3]) for u in users}
         return users

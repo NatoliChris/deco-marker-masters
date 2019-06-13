@@ -51,25 +51,25 @@ const gradeThresholds = {
 
 const templates = {
     A: {
-        HD: "For Criteria A, you've done extremely well in showing a high level of programming proficiency.",
-        DI: "For Criteria A, you've done very well in showing a great level of programming proficiency.",
-        CR: "For Criteria A, you've done well in showing a good level of programming proficiency.",
-        PS: "For Criteria A, you've done a good job of showing some programming proficiency.",
-        FA: "You have not shown satisfactory programming proficiency in Criteria A."
+        HD: "For Criteria A, Complex and self-authored demonstrates a strong comprehension of programming concepts covered in this class.",
+        DI: "For Criteria A, Your original and self-authored code demonstrates a considered ability to comprehend, modify and integrate code.",
+        CR: "For Criteria A, You have demonstrated an ability author and integrate code with sufficient comprehension of programming concepts covered in this class.",
+        PS: "For Criteria A, Work demonstrates an ability to comprehend original code through the use of modified, integrated programming concepts covered in this class.",
+        FA: "For Criteria A, Sumbitted code has not demonstrated an ability to author original code and/or the ability comprehend, modify or integrate code has not been demonstrated."
     },
     B: {
-        HD: "For Criteria B, you have created an excellent work with interesting and high-quality visual design, and clear interaction that is obvious to the user.",
-        DI: "For Criteria B, you have created a high-quality and interesting sketch with well-considered interaction and great visual design.",
-        CR: "For Criteria B, you have created a sketch with mostly well-considered interaction and good visual design.",
-        PS: "For Criteria B, you have created a satisfactory sketch with some consideration put into your interaction, along with decent visual design.",
-        FA: "For Criteria B, you have not created an adequate design."
+        HD: "For Criteria B, Strong interaction, layout and visual design to the level of professional standards.",
+        DI: "For Criteria B, Well-considered interaction, layout and visual design.",
+        CR: "For Criteria B, Mostly clear and adequately considered interaction, layout and visual design.",
+        PS: "For Criteria B, Satisfying interaction design, layout and visual.",
+        FA: "For Criteria B, Unclear, inadequate interaction, layout and visual design."
     },
     C: {
-        HD: "For Criteria C, you've shown an excellent understanding of topics discussed in class, and your report is formatted to an exceptional level of quality. Well done!",
-        DI: "For Criteria C, you've shown a good understanding of topics discussed in class, and you have submitted a well-formatted and aesthetic report.",
-        CR: "For Criteria C, you've shown decent understanding of topics discussed in class, and submitted a well-formatted and good-quality report.",
-        PS: "For Criteria C, you've shown some understanding of the topics discussed in class, and submitted a report with a satisfactory level of quality.",
-        FA: "For Criteria C, you have not shown adequate understanding of the topics discussed in class, and your report is poorly presented and formatted."
+        HD: "For Criteria C, Excellent demonstration and solid understanding of the topics taught in the unit and clearly documented project that matches professional standards. Presented in an attractive and aesthetically pleasing format to an exceptional level of quality.",
+        DI: "For Criteria C, Thorough demonstration and solid understanding of the topics taught in the unit and clearly documented project. Presented in an attractive and aesthetically pleasing format to a high-level of quality.",
+        CR: "For Criteria C, Satisfying demonstration and understanding of the topics taught in the unit and well-documented project. Presented in an attractive and aesthetically pleasing format at a good level of quality.",
+        PS: "For Criteria C, Some demonstration and understanding of the topics taught in the unit and mostly well-documented project. Presented in an attractive and aesthetically pleasing format at a satisfactory level of quality.",
+        FA: "For Criteria C, Inadequate demonstration and understanding of the topics taught in the unit and missing and confusing project documentation. Poorly presented and formatted."
     }
 }
 

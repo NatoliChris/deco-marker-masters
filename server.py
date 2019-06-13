@@ -14,8 +14,8 @@ users = {}
 #  BASE_URL = 'https://sydney.test.instructure.com/api/v1'
 BASE_URL = 'https://canvas.sydney.edu.au/api/v1'
 
-COURSE = 13984
-ASSIGNMENT = 130963
+COURSE = 14318
+ASSIGNMENT = 132223
 
 CRITERIA = [ '_5362', '_6391', '_2163' ]
 
@@ -23,7 +23,7 @@ sids = []
 
 with open('token') as f:
     TOKEN = f.read().strip()
-
+    
 HEADERS = {
     'Authorization': 'Bearer ' + TOKEN,
     'Content-Type': 'multipart/form-data'
@@ -135,7 +135,7 @@ def get_sketch_path(filename):
     return ''
 
 def get_users():
-    with open('users') as f:
+    with open('users_idea.txt') as f:
         users = [x.strip().split('|') for x in f.read().strip().split('\n')]
         users = [(int(u[0]), int(u[1]), u[2], u[3]) for u in users]
         return users
@@ -143,8 +143,8 @@ def get_users():
 if __name__ == '__main__':
     files = os.listdir('extracted/')
     ids = {get_user_id(f): {} for f in files}
-    if os.path.exists('sids'):
-        with open('sids') as f:
+    if os.path.exists('sids_idea.txt'):
+        with open('sids_idea.txt') as f:
             sids = f.readlines()
             sids = [int(x.strip()) for x in sids if x]
     for f in files:
@@ -170,6 +170,6 @@ if __name__ == '__main__':
                 'sid': int(user[1]),
             }
     print(len(users))
-    #  app.run(ssl_context='adhoc')
-    app.run(ssl_context='adhoc', host="0.0.0.0")
+    app.run(ssl_context='adhoc')
+    # app.run(ssl_context='adhoc', host="0.0.0.0")
 
