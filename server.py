@@ -14,10 +14,11 @@ users = {}
 #  BASE_URL = 'https://sydney.test.instructure.com/api/v1'
 BASE_URL = 'https://canvas.sydney.edu.au/api/v1'
 
-COURSE = 14318
-ASSIGNMENT = 132223
+COURSE = 18127
+ASSIGNMENT = 141421
 
-CRITERIA = [ '_5362', '_6391', '_2163' ]
+# CRITERIA = [ '_8700', '_5444', '_2163' ]
+CRITERIA = [ '_8700', '_5444' ]
 
 sids = []
 
@@ -92,11 +93,16 @@ def send_assignment(sid, rubric, comment, mark):
         data=(f'submission[posted_grade]={mark}'
               f'&comment[text_comment]={comment}'
               f'&rubric_assessment[{CRITERIA[0]}][points]={rubric["A"]}'
-              f'&rubric_assessment[{CRITERIA[1]}][points]={rubric["B"]}'
-              f'&rubric_assessment[{CRITERIA[2]}][points]={rubric["C"]}'),
+              f'&rubric_assessment[{CRITERIA[1]}][points]={rubric["B"]}'),
         headers=HEADERS).json()
-    print(mark, rubric["A"], rubric["B"], rubric["C"])
-    if mark != rubric["A"] + rubric["B"] + rubric["C"]:
+    print(mark, rubric["A"], rubric["B"])
+    if mark != rubric["A"] + rubric["B"]:
+
+
+            #   f'&rubric_assessment[{CRITERIA[2]}][points]={rubric["C"]}'),
+
+    # print(mark, rubric["A"], rubric["B"])
+    # if mark != rubric["A"] + rubric["B"]:
         r = req.put(
             f'{BASE_URL}/courses/{COURSE}/assignments/{ASSIGNMENT}/submissions/sis_user_id:{sid}',
             data=(f'submission[posted_grade]={mark}'),

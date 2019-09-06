@@ -3,15 +3,15 @@ from tqdm import tqdm
 from pprint import pprint
 import multiprocessing as mp
 
-URL = "https://script.google.com/macros/s/AKfycbwdyHao-vp_Tg5zU3WXuAvb9X9qWHaiPIhbH36Khw/exec"
+URL = "https://script.google.com/macros/s/AKfycbx8JYfUbQf4SMSCYW1dU_6aJkHFVWaBzIyHuhh8IQ/exec"
 
 BASE_URL = 'https://canvas.sydney.edu.au/api/v1'
 SPREADSHEET_ID = "15_S3NnkU6Z7lEXlEEpWCsYy0tDbs_46tkt5khuCkcOI"
 
-COURSE = 14318
-ASSIGNMENT = 132223
+COURSE = 18127
+ASSIGNMENT = 141421
 
-CRITERIA = [ '_5362', '_6391', '_2163' ]
+CRITERIA = [ '_8700', '_5444' ]
 
 with open('token') as f:
     TOKEN = f.read().strip()
@@ -22,7 +22,7 @@ HEADERS = {
 }
 
 markers = {
-    2652: "Liam",
+    25827: "Chris",
     127108: "Kartik",
     27704: "Harrison",
     45172: "Alex"
@@ -54,7 +54,7 @@ def append_row(student):
     if "rubric_assessment" in student and "points" in student["rubric_assessment"][CRITERIA[0]]:
         crit_a = student["rubric_assessment"][CRITERIA[0]]["points"]
         crit_b = student["rubric_assessment"][CRITERIA[1]]["points"]
-        crit_c = student["rubric_assessment"][CRITERIA[2]]["points"]
+        # crit_c = student["rubric_assessment"][CRITERIA[2]]["points"]
     r = requests.get(
         URL,
         {
@@ -69,7 +69,7 @@ def append_row(student):
             ]),
             "Criteria A": crit_a,
             "Criteria B": crit_b,
-            "Criteria C": crit_c,
+            # "Criteria C": crit_c,
             "Final Grade": float(student["score"]) if student["score"] is not None else "",
         }
     )

@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="static/style.css" media="all">
-    <title>IDEA9103 Assignment 3 Marking Site</title>
+    <title>IDEA9103 Marking Bot</title>
 </head>
+
 <body>
     <div class="student-container">
-            <div class="student">
-                <span class="heading field">Unikey</span>
-                <span class="heading field">SID</span>
-                <span class="heading field">Name</span>
-                <span class="heading field">Late?</span>
-            </div>
+        <div class="student">
+            <span class="heading field">Unikey</span>
+            <span class="heading field">SID</span>
+            <span class="heading field">Name</span>
+            <span class="heading field">Late?</span>
+        </div>
         {% for id in student_ids %}
-            {% set student = students[id] %}
-            {% if student.submissions != None %}
-            <a href="{{ id }}"><div class="student">
-            {% else %}
-            <div class="student gray">
-            {% endif %}
+        {% set student = students[id] %}
+        {% if student.submissions != None %}
+        <a href="{{ id }}">
+            <div class="student">
+                {% else %}
+                <div class="student gray">
+                    {% endif %}
                     <span class="field">{{ student.unikey }}</span>
                     <span class="field">{{ student.sid }}</span>
                     <span class="field">{{ student.name }}</span>
                     {% if student.late %}
-                        <span class="field red">Yes</span>
+                    <span class="field red">Yes</span>
                     {% else %}
-                        <span class="field green">No</span>
+                    <span class="field green">No</span>
                     {% endif %}
                 </div>
-            {% if student.submissions != None %}
-            </a>
-            {% endif %}
+                {% if student.submissions != None %}
+        </a>
+        {% endif %}
         {% endfor %}
     </div>
 </body>
+
 </html>
