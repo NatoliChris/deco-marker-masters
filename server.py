@@ -16,6 +16,14 @@ BASE_URL = 'https://canvas.sydney.edu.au/api/v1'
 
 EXTRACT_URL = "extracted_idea"
 
+ALLOWED_FORMATS = (
+    ".pdf",
+    ".PDF",
+    ".docx",
+    ".DOCX"
+)
+
+
 COURSE = 18127
 ASSIGNMENT = 141421
 
@@ -77,13 +85,13 @@ def view_pdf(user_id):
     filedir = "{}/{}".format(EXTRACT_URL, current['latest_submission'])
 
     # Filter --> list --> should only evaluate to 1 pdf.
-    pdf_file = list(filter(lambda f: f.endswith(('.pdf', '.PDF')), list(os.listdir(filedir))))
+    pdf_file = list(filter(lambda f: f.endswith(ALLOWED_FORMATS), list(os.listdir(filedir))))
 
     # Check the directory above if the pdf couldn't be found
     if len(pdf_file) < 1:
         # Try the layer up for weird submissions that have it in separate folders.
         filedir = os.path.dirname(filedir)
-        pdf_file = list(filter(lambda f: f.endswith(('.pdf', '.PDF')), list(os.listdir(filedir))))
+        pdf_file = list(filter(lambda f: f.endswith(ALLOWED_FORMATS), list(os.listdir(filedir))))
 
     # PDF file couldn't be found
     if len(pdf_file) == 0:
