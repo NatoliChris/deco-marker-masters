@@ -15,6 +15,7 @@ const buttonStop = getElement("btn-stop");
 const buttonMark = getElement("btn-mark");
 const buttonFull = getElement("btn-full");
 const buttonHome = getElement("btn-home");
+const buttonPDF = getElement("btn-pdf");
 
 const sid = parseInt(getElement("sid").innerHTML);
 
@@ -157,6 +158,12 @@ function mark() {
   }
 }
 
+function viewPDF() {
+  const userid = buttonPDF.getAttribute("data-user")
+
+  window.open(`/pdf/${userid}`, "_blank");
+}
+
 function full() {
   iframe.requestFullscreen();
 }
@@ -278,6 +285,7 @@ window.onLoad = () => {
   buttonMark.onclick = mark;
   buttonFull.onclick = full;
   buttonHome.onclick = home;
+  buttonPDF.onclick = viewPDF;
   // buttonNext.onclick = next;
   submit.onclick = sendMarkToCanvas;
   updateDisplay();
