@@ -79,8 +79,18 @@ def view_pdf(user_id):
     # Filter --> list --> should only evaluate to 1 pdf.
     pdf_file = list(filter(lambda f: f.endswith(('.pdf', '.PDF')), list(os.listdir(filedir))))
 
+    # Check the directory above if the pdf couldn't be found
+    if len(pdf_file) < 1:
+        # Try the layer up for weird submissions that have it in separate folders.
+        filedir = os.path.dirname(filedir)
+        pdf_file = list(filter(lambda f: f.endswith(('.pdf', '.PDF')), list(os.listdir(filedir))))
+
+    # PDF file couldn't be found
+    if len(pdf_file) == 0:
+        abort(404)
+
     # Return the file to read.
-    return nocache(send_file("{}/{}/{}".format(EXTRACT_URL, current['latest_submission'], pdf_file[0])))
+    return nocache(send_file("{}/{}".format(filedir, pdf_file[0])))
 
 
 @app.route('/mySketch.js')
